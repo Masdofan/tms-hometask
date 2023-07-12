@@ -5,7 +5,7 @@ public class HT0 {
     public static void main(String[] args) {
 //        Создайте массив целых чисел. Напишете программу, которая выводит
 //        сообщение о том, входит ли заданное число в массив или нет.
-//                Пусть число для поиска задается с консоли (класс Scanner).
+//        Пусть число для поиска задается с консоли (класс Scanner).
 
         Scanner input = new Scanner(System.in);
 
@@ -17,7 +17,6 @@ public class HT0 {
 
             if (el == found) {
                 System.out.println("Found");
-                break;
             }
 
 
