@@ -11,13 +11,32 @@ public class HT2 {
 //        Пусть будет возможность создавать массив произвольного размера.
 //        Пусть размер массива вводится с консоли.
 
-        Scanner arrLength = new Scanner(System.in);
+        Scanner arrLengthIn = new Scanner(System.in);
 
-        double[] arr = new double [arrLength.nextInt()];
+        int arrLength = arrLengthIn.nextInt();
+
+        int[] arr = new int [arrLength];
 
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = Math.random();
+            arr[i] = (int) (Math.random() * 10);
         }
         System.out.println(Arrays.toString(arr));
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+
+        int sum = 0;
+        for ( int value : arr ) {
+            sum += value;
+        }
+
+        System.out.println(sum);
+
+        int arrAvg = sum / arr.length;
+
+        System.out.println("Min: " + arr[0]);
+
+        System.out.println("Max: " + arr[arrLength - 1]);
+
+        System.out.println("Average: " + arrAvg);
     }
 }
