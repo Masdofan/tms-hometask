@@ -20,16 +20,16 @@ public class HT2 {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 10);
         }
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));                   //Для наглядности работы кода
         Arrays.sort(arr);
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));                   //Для наглядности работы кода
 
         int sum = 0;
         for ( int value : arr ) {
-            sum += value;
+            sum = sum + value;
         }
 
-        System.out.println(sum);
+//        System.out.println(sum);                                    //Для наглядности работы кода
 
         int arrAvg = sum / arr.length;
 
