@@ -20,7 +20,7 @@ public class Main {
 
         cc2.balancePlus(2000);
 
-        cc3.balanceMinus(10528);
+        cc3.balanceMinus(21000);
 
         cc1.getInfo();
         cc2.getInfo();

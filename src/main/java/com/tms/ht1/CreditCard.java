@@ -44,7 +44,10 @@ public class CreditCard {
     }
 
     public int balanceMinus(int sumMinus) {
-        this.balance -= sumMinus;
+        if (balance > sumMinus) {
+            this.balance -= sumMinus;
+        }
         return this.balance;
+
     }
 }
