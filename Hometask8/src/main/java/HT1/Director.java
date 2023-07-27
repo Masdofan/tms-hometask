@@ -4,30 +4,74 @@ import java.util.Arrays;
 
 public class Director extends Employee {
 
+    @Override
+    public Post getPost() {
+        return Post.Director;
+    }
+
     public Director(String name, String secondName, int experience) {
         super(name, secondName, experience);
     }
 
-    Employee[] employees = new Employee[20];
+    Employee[] employees = new Employee[5];
 
-    public void employeesList() {
-        System.out.println(Arrays.toString(employees));
+    public String getEmployeesList() {
+        String employessListTxt = "";
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                employessListTxt = employessListTxt + " " + employees[i].toString();
+
+            }
+        } return employessListTxt;
     }
 
-    public void addEmployee(Employee employee) {
-
-        int count = 0;
-
+    public void addEmployee(Worker worker) {
         for (int i = 0; i < employees.length; i++) {
-            if (employee == null) {
-                employees[i] = employee;
+            if (employees[i] == null) {
+                employees[i] = worker;
                 break;
             }
         }
+    }
 
-//    private int salary() {
-//        return baseBet * post.getRatio() * experience * 2;
-//    }
+    public void addEmployee(Director director) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
+                employees[i] = director;
+                break;
+
+            }
+        }
 
     }
+
+    @Override
+    public int getSalary() {
+        return super.getSalary() + (100 * getCountOfEmployee);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", salary=" + getSalary() + '\'' +
+                ", employeeList=" + "[" + getEmployeesList() + "]" +
+                '}';
+    }
+
+    int countOfEmployee = 0;
+
+    public int getCountOfEmployee() {
+        int countOfEmployee = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                countOfEmployee++;
+            }
+        } return countOfEmployee;
+    }
+
 }
+
+
+

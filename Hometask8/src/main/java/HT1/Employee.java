@@ -8,6 +8,8 @@ public abstract class Employee {
 
     int baseBet = 1000;
 
+    public abstract Post getPost();
+
     public Employee(String name, String secondName, int experience) {
         this.name = name;
         this.secondName = secondName;
@@ -16,10 +18,16 @@ public abstract class Employee {
 
 
 
-    private int salary() {
-        return baseBet * post.getRatio() * experience;
+    public int getSalary() {
+        return baseBet * getPost().getRatio() * experience;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", salary=" + getSalary() +
+                '}';
+    }
 }

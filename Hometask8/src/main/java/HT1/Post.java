@@ -2,8 +2,8 @@ package HT1;
 
 public enum Post {
 
-    Director(30),
-    Worker(15);
+    Director(2),
+    Worker(1);
 
     private int ratio;
 
