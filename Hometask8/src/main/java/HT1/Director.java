@@ -47,7 +47,15 @@ public class Director extends Employee {
 
     @Override
     public int getSalary() {
+        int countOfEmployee = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                countOfEmployee++;
+            }
+        } return countOfEmployee;
         return super.getSalary() + (100 * getCountOfEmployee);
+
+
     }
 
     @Override
@@ -59,8 +67,6 @@ public class Director extends Employee {
                 ", employeeList=" + "[" + getEmployeesList() + "]" +
                 '}';
     }
-
-    int countOfEmployee = 0;
 
     public int getCountOfEmployee() {
         int countOfEmployee = 0;
