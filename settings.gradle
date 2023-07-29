@@ -2,4 +2,6 @@ rootProject.name = 'tms-hometask'
 include 'hometask_1'
 include 'Hometask3'
 include 'Hometask4'
+include 'Hometask9'
+include 'Homeask9'
 
