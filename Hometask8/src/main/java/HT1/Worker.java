@@ -10,4 +10,9 @@ public class Worker extends Employee{
     public Post getPost() {
         return Post.Worker;
     }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 }

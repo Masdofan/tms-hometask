@@ -30,4 +30,8 @@ public abstract class Employee {
                 ", salary=" + getSalary() +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
 }

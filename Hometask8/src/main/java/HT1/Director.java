@@ -52,8 +52,8 @@ public class Director extends Employee {
             if (employees[i] != null) {
                 countOfEmployee++;
             }
-        } return countOfEmployee;
-        return super.getSalary() + (100 * getCountOfEmployee);
+        }
+        return super.getSalary() + (100 * countOfEmployee);
 
 
     }
@@ -68,15 +68,10 @@ public class Director extends Employee {
                 '}';
     }
 
-    public int getCountOfEmployee() {
-        int countOfEmployee = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                countOfEmployee++;
-            }
-        } return countOfEmployee;
+    @Override
+    public String getName() {
+        return super.getName();
     }
-
 }
 
 

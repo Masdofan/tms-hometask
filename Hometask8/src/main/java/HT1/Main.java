@@ -6,13 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Worker worker = new Worker("Петя", "Г.", 2);
+        Worker worker = new Worker("Petya", "G", 2);
 
-        Worker worker1 = new Worker("Вася", "А.", 3);
+        Worker worker1 = new Worker("Zhenya", "A.", 3);
 
-        Worker worker2 = new Worker("Глеб", "Ю.", 1);
+        Worker worker2 = new Worker("Gleb", "U.", 1);
 
-        Director director = new Director("Ваня", "Ц.", 5);
+        Director director = new Director("Vanya", "C.", 5);
 
         System.out.println(worker.toString());
 
@@ -24,17 +24,21 @@ public class Main {
 
         director.addEmployee(worker);
 
-        director.addEmployee(worker2);
+        director.addEmployee(worker1);
 
         System.out.println(director.toString());
 
-        Director director1 = new Director("Егор", "В.", 10);
+        Director director1 = new Director("Egor", "V.", 10);
 
         director1.addEmployee(worker2);
 
         director.addEmployee(director1);
 
         System.out.println(director.toString());
+
+        FindWorkerService findWorkerService = new FindWorkerService();
+
+        System.out.println(findWorkerService.findWorker(director, "Gleb"));
 
 
     }
