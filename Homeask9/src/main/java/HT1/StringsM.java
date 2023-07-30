@@ -9,8 +9,12 @@ public  class StringsM {
     }
 
      static void replaceLetters(String docNum) {
-        String replace = docNum.replace("A", "*").replace("b", "*").replace("c", "*").replace("d", "*").replace("E", "*").replace("f", "*");
-        System.out.println(replace);
+         StringBuilder sbReplace = new StringBuilder(docNum);
+         sbReplace.replace(5, 8, "***");
+         sbReplace.replace(14, 17, "***");
+         sbReplace.replace(19, 20, "*");
+         sbReplace.replace(21, 22, "*");
+        System.out.println(sbReplace);
     }
 
      static void lettersInLowerCase(String docNum) {
