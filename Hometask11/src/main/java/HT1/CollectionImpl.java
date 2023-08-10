@@ -2,21 +2,21 @@ package HT1;
 
 import java.util.Arrays;
 
-public class TabletCollectionImpl implements GenericCollection <Tablet>{
+public class CollectionImpl<T> implements GenericCollection <T> {
 
     private int size = 10;
 
-    public TabletCollectionImpl(int size) {
+    public CollectionImpl(int size) {
         this.size = size;
     }
 
-    public TabletCollectionImpl() {
+    public CollectionImpl() {
     }
 
-    Tablet[] arr = new Tablet[size];
+    Object[] arr = new Object[size];
 
     @Override
-    public void add(Tablet device) {
+    public void add(T device) {
 
         if (arr[arr.length - 1] == null) {
             for (int i = 0; i < arr.length; i++) {
@@ -26,7 +26,7 @@ public class TabletCollectionImpl implements GenericCollection <Tablet>{
                 }
             }
         } else {
-            Tablet[] arr1 = Arrays.copyOf(arr, arr.length + 1);
+            Object[] arr1 = Arrays.copyOf(arr, arr.length + 1);
             for (int i = 0; i < arr1.length; i++) {
                 if (arr1[i] == null) {
                     arr1[i] = device;
@@ -40,8 +40,8 @@ public class TabletCollectionImpl implements GenericCollection <Tablet>{
     }
 
     @Override
-    public Tablet getElem(int index) {
-        return arr[index];
+    public T getElem(int index) {
+        return (T) arr[index];
     }
 
     @Override
@@ -57,10 +57,10 @@ public class TabletCollectionImpl implements GenericCollection <Tablet>{
     }
 
     @Override
-    public boolean contains(Tablet device) {
+    public boolean contains(T device) {
 
-        for (Tablet tablet : arr) {
-            if (tablet == device) {
+        for (Object object : arr) {
+            if (object == device) {
                 return true;
             }
         }

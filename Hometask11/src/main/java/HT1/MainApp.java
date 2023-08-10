@@ -1,7 +1,5 @@
 package HT1;
 
-import java.util.Arrays;
-
 public class MainApp {
 
     public static void main(String[] args) {
@@ -19,7 +17,7 @@ public class MainApp {
         Phone phone11 = new Phone("brand11", 110000);
         Phone phone12 = new Phone("brand12", 120000);
 
-        GenericCollection phoneCollection = new PhoneCollectionImpl();
+        GenericCollection<Phone> phoneCollection = new CollectionImpl<>();
 
         phoneCollection.add(phone1);
         phoneCollection.add(phone2);
@@ -54,7 +52,7 @@ public class MainApp {
         Tablet tablet11 = new Tablet("brand11", 110000);
         Tablet tablet12 = new Tablet("brand12", 120000);
 
-        GenericCollection tabletCollection = new TabletCollectionImpl();
+        GenericCollection <Tablet> tabletCollection = new CollectionImpl<>();
 
         tabletCollection.add(tablet1);
         tabletCollection.add(tablet2);
@@ -90,7 +88,7 @@ public class MainApp {
         Laptop laptop11 = new Laptop("brand11", 110000);
         Laptop laptop12 = new Laptop("brand12", 120000);
 
-        GenericCollection laptopCollection = new LaptopCollectionImpl(15);
+        GenericCollection <Laptop> laptopCollection = new CollectionImpl<>(15);
 
         laptopCollection.add(laptop1);
         laptopCollection.add(laptop2);
