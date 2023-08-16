@@ -28,10 +28,11 @@ public class Main {
                 .filter(String -> String.startsWith("A") || String.startsWith("a"))
                 .collect(Collectors.toList());
 
+//        studentsNameList.clear();
+
         Optional<String> first = studentsNameList.stream()
                 .sorted(Comparator.comparing(String -> String))
-                .findFirst();
-
+                        .findFirst();
 
 
         System.out.println(count);
