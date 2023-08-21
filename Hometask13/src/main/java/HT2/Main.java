@@ -1,23 +1,37 @@
 package HT2;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
+        int dayOfWeekToFound = 3;
+
         Calendar calendar = new GregorianCalendar();
 
-        int dayOfWeek = 3;
+        int weekDayNow = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int dayOfWeekNow = calendar.get(Calendar.DAY_OF_WEEK);
+        int daysLeft = dayOfWeekToFound - weekDayNow;
 
-        System.out.println(dayOfWeekNow);
+        if (daysLeft < 0) {
+            daysLeft += 7;
+        }
 
-        int days = dayOfWeek - dayOfWeekNow;
+        calendar.add(Calendar.DAY_OF_YEAR, daysLeft);
+
+        Date date = calendar.getTime();
+
+        String nextTue = new SimpleDateFormat("dd/MM/yyyy").format(date);
+
+        System.out.println(nextTue);
+
+
+
 
     }
 
