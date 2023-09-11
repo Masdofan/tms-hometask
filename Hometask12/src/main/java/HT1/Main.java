@@ -14,7 +14,7 @@ public class Main {
         List<Integer> randomList = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
-            randomList.add(new Random().nextInt(1, 100));
+            randomList.add(new Random().nextInt());
         }
 
         List<Integer> collect1 = randomList.stream()
