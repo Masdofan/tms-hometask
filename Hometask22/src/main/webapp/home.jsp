@@ -28,11 +28,15 @@
 
 <c:forEach items="${devices}" var="device">
 
-    <li>Type: ${device.type} - Brand: ${device.brand}</li>
+    <form action="/delete" method="post">
+    <li>
+        Type: ${device.type} - Brand: ${device.brand}
+        <input type="hidden" name="deleteById" value="${device.uuid}">
+        <input type="submit" value="delete">
+    </li>
+    </form>
 
 </c:forEach>
-
-
 
 </body>
 </html>

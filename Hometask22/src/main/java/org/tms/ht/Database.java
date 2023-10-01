@@ -4,6 +4,8 @@ import org.tms.ht.domain.Device;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Database {
@@ -25,6 +27,15 @@ public class Database {
                 .filter(device -> device.getBrand().equals(brand))
                 .collect(Collectors.toList());
 
+    }
+
+    public void delete (UUID uuid) {
+
+        Optional<Device> first = devices.stream()
+                .filter(device -> device.getUuid().equals(uuid))
+                .findFirst();
+
+        first.ifPresent(device -> devices.remove(device));
     }
 
 }

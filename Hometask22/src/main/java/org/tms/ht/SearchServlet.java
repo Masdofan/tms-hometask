@@ -24,7 +24,7 @@ public class SearchServlet extends HttpServlet {
 
         req.setAttribute("devices", devices);
 
-        req.getRequestDispatcher("/home.jsp").forward(req, resp);
+        req.getRequestDispatcher("/home").forward(req, resp);
 
     }
 }

@@ -11,5 +11,6 @@ public class Device {
 
     private String type;
     private String brand;
+    private UUID uuid;
 
 }
