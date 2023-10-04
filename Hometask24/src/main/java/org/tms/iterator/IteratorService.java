@@ -2,24 +2,17 @@ package org.tms.iterator;
 
 public class IteratorService {
 
-    public Device findById (Device[] devices, int id) {
+    int iterator = -1;
 
-        for (int i = 0; i <= devices.length; i++){
-            if (devices[i].getId() == id) {
-                return devices[i];
-            }
+    public Device next(Device[] devices) {
 
-        }
+        iterator += 1;
 
-        return null;
+        if (devices[iterator] != null) {
+            return devices[iterator];
+        } else return next(devices);
+
     }
 
-    public Device findFirst (Device[] devices) {
-        return devices[0];
-    }
-
-    public Device findLast (Device[] devices) {
-        return devices[devices.length - 1];
-    }
 
 }

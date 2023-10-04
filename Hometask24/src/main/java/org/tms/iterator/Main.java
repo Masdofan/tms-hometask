@@ -15,13 +15,16 @@ public class Main {
 
         Device[] devices = {device1, device2, device3, device4, device5, device6};
 
-        Device byId = iteratorService.findById(devices, 4);
+        Device next = iteratorService.next(devices);
 
-        Device first = iteratorService.findFirst(devices);
+        Device next1 = iteratorService.next(devices);
 
-        Device last = iteratorService.findLast(devices);
+        Device next2 = iteratorService.next(devices);
 
-        System.out.println(last);
+
+        System.out.println(next);
+        System.out.println(next1);
+        System.out.println(next2);
 
     }
 
