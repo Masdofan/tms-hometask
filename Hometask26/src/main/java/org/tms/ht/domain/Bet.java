@@ -5,8 +5,9 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Horse {
+public class Bet {
 
-    String name;
+    private int numberOfPair;
+    private int cost;
 
 }

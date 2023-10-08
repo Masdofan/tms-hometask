@@ -1,7 +1,9 @@
 package org.tms.ht.service;
 
+import org.tms.ht.domain.Bet;
+
 public interface InputService {
 
-    int inputPair();
+    Bet inputPair();
 
 }

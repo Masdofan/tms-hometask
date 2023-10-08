@@ -4,6 +4,6 @@ public interface RaceService {
 
     void runRace();
 
-    void checkResult(int numberOfPair)
+    int checkResult();
 
 }

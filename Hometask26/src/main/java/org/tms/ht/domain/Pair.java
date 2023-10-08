@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Pair {
 
+    int numberOfPair;
     Rider rider;
     Horse horse;
+    int result;
 
 }
