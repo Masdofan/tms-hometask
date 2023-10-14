@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean  class="org.tms.ht.domain.Horse" scope="prototype" name="horse1">
+        <constructor-arg name="name" value="horse1"/>
+    </bean>
+
+    <bean  class="org.tms.ht.domain.Horse" scope="prototype" name="horse2">
+        <constructor-arg name="name" value="horse2"/>
+    </bean>
+
+    <bean  class="org.tms.ht.domain.Horse" scope="prototype" name="horse3">
+        <constructor-arg name="name" value="horse3"/>
+    </bean>
+
+
+    <bean class="org.tms.ht.domain.Rider" scope="prototype" name="rider1">
+        <constructor-arg name="name" value="rider1"/>
+    </bean>
+
+    <bean class="org.tms.ht.domain.Rider" scope="prototype" name="rider2">
+        <constructor-arg name="name" value="rider2"/>
+    </bean>
+
+    <bean class="org.tms.ht.domain.Rider" scope="prototype" name="rider3">
+        <constructor-arg name="name" value="rider3"/>
+    </bean>
+
+    <bean class="org.tms.ht.domain.Pair" scope="prototype" name="pair1">
+        <constructor-arg name="horse" value="horse1"/>
+        <constructor-arg name="rider" value="rider1"/>
+        <constructor-arg name="result" value="0"/>
+        <constructor-arg name="numberOfPair" value="1"/>
+    </bean>
+
+    <bean class="org.tms.ht.domain.Pair" scope="prototype" name="pair2">
+        <constructor-arg name="horse" value="horse2"/>
+        <constructor-arg name="rider" value="rider2"/>
+        <constructor-arg name="result" value="0"/>
+        <constructor-arg name="numberOfPair" value="2"/>
+    </bean>
+
+    <bean class="org.tms.ht.domain.Pair" scope="prototype" name="pair3">
+        <constructor-arg name="horse" value="horse3"/>
+        <constructor-arg name="rider" value="rider3"/>
+        <constructor-arg name="result" value="0"/>
+        <constructor-arg name="numberOfPair" value="3"/>
+    </bean>
+
+<!--  _____________________________________________________________________  -->
+
+    <bean class="org.tms.ht.service.impl.InputServiceImpl" name="inputService"/>
+
+    <bean class="org.tms.ht.service.impl.WalletServiceImpl" name="walletService">
+        <constructor-arg name="balance" value="10000"/>
+    </bean>
+
+    <bean class="org.tms.ht.service.impl.RaceServiceImpl" name="raceService">
+        <constructor-arg name="inputService" ref="inputService"/>
+        <constructor-arg name="walletService" ref="walletService"/>
+    </bean>
+
+
+
+</beans>
