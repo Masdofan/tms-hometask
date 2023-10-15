@@ -20,7 +20,7 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.tms.ht.config");
         context.registerShutdownHook();
 
-        RaceService raceService = context.getBean(RaceServiceImpl.class);
+        RaceService raceService = context.getBean(RaceService.class);
 
         Scanner scanner = new Scanner(System.in);
 

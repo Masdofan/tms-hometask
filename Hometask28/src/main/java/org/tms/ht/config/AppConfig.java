@@ -7,12 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.tms.ht.domain.Horse;
 import org.tms.ht.domain.Pair;
 import org.tms.ht.domain.Rider;
-import org.tms.ht.service.InputService;
-import org.tms.ht.service.RaceService;
-import org.tms.ht.service.WalletService;
-import org.tms.ht.service.impl.InputServiceImpl;
-import org.tms.ht.service.impl.RaceServiceImpl;
-import org.tms.ht.service.impl.WalletServiceImpl;
+import org.tms.ht.service.MyAspect;
 
 @Configuration
 @EnableAspectJAutoProxy
@@ -63,6 +58,5 @@ public class AppConfig {
     Pair pair3 () {
         return new Pair(3, rider1(), horse3(), 0);
     }
-
 
 }
