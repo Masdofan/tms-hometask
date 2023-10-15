@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Pair {
 
-    int numberOfPair;
-    Rider rider;
-    Horse horse;
-    int result;
+    private int numberOfPair;
+    private Rider rider;
+    private Horse horse;
+    private int result;
 
 }

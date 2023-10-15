@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class Horse {
 
-    String name;
+    private String name;
 
 }
