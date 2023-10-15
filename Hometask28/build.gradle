@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.30'
+
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.20.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
