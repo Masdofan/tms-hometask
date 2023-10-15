@@ -15,7 +15,7 @@ import java.util.Timer;
 @ComponentScan(basePackages = "org.tms.ht.service.impl")
 public class MyAspect {
 
-    long timeBefore;
+     private long timeBefore;
 
     @Pointcut("execution(public void org.tms.ht.service.impl.RaceServiceImpl.runRace())")
     public void myPointCut() {
