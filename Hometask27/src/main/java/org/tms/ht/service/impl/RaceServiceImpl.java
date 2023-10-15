@@ -3,6 +3,8 @@ package org.tms.ht.service.impl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.tms.ht.domain.Bet;
 import org.tms.ht.domain.Pair;
 import org.tms.ht.service.InputService;
@@ -15,6 +17,8 @@ import java.util.Random;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Service
 public class RaceServiceImpl implements RaceService {
 
     private InputService inputService;
@@ -22,16 +26,12 @@ public class RaceServiceImpl implements RaceService {
     private List<Pair> pairs;
     private int inputPair;
 
-    public RaceServiceImpl(InputService inputService, WalletService walletService) {
+    @Autowired
+    public RaceServiceImpl(InputService inputService, WalletService walletService, List<Pair> pairs) {
         this.inputService = inputService;
         this.walletService = walletService;
+        this.pairs = pairs;
     }
-
-//    @Override
-//    public int getRaceResult() {
-//
-//        return walletService.getBalance();
-//    }
 
     @Override
     public void runRace() {
@@ -68,9 +68,6 @@ public class RaceServiceImpl implements RaceService {
             System.out.println("Lose: -" + inputPair.getCost());
         }
 
-//        int balance = getRaceResult();
-//
-//        System.out.println("Balance now: " + balance);
 
     }
 

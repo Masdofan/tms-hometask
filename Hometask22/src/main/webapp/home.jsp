@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.tms.ht.domain.Device" %>
+<%@ page import="org.tms.ht.org.tms.ht.domain.Device" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>

@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.tms.ht.domain.Device" %>
+<%@ page import="org.tms.ht.org.tms.ht.domain.Device" %>
 <html>
 <head>
     <meta charset="UTF-8">
