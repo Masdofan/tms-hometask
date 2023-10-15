@@ -7,11 +7,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.tms.ht.domain.Horse;
 import org.tms.ht.domain.Pair;
 import org.tms.ht.domain.Rider;
-import org.tms.ht.service.MyAspect;
 
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = "org.tms.ht.service")
+@ComponentScan(basePackages = "org.tms.ht.aspect")
 public class AppConfig {
 
     @Bean

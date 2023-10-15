@@ -1,10 +1,9 @@
-package org.tms.ht.service;
+package org.tms.ht.aspect;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +15,19 @@ import java.util.Timer;
 @ComponentScan(basePackages = "org.tms.ht.service.impl")
 public class MyAspect {
 
-    Date date;
     long timeBefore;
-
 
     @Pointcut("execution(public void org.tms.ht.service.impl.RaceServiceImpl.runRace())")
     public void myPointCut() {
+    }
+
+    @Pointcut("@annotation(org.tms.ht.annotation.MyAnnotation)")
+    public void myAnnotationPointCut() {
+    }
+
+    @Before("myAnnotationPointCut()")
+    public void printSmth() {
+        System.out.println("Annotation aspect");
     }
 
     @Before("myPointCut()")

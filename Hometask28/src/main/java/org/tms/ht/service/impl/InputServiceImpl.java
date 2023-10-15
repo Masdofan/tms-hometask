@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tms.ht.annotation.MyAnnotation;
 import org.tms.ht.domain.Bet;
 import org.tms.ht.domain.Pair;
 import org.tms.ht.service.InputService;
@@ -26,6 +27,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
+    @MyAnnotation
     public Bet inputPair() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input number of pair");
