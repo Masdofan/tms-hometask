@@ -22,6 +22,7 @@ public class HomeController {
 
     private BookService bookService;
 
+    @GetMapping
     public ModelAndView homePage(@ModelAttribute(name = "book") Book book) {
 
         ModelAndView modelAndView = new ModelAndView("home");
@@ -30,13 +31,7 @@ public class HomeController {
 
         return modelAndView;
     }
-
-
-    @GetMapping
-    public String homepage() {
-        bookService.getBooks();
-        return "home";
-    }
+     
 
     @PostMapping
     public ModelAndView addBook(@ModelAttribute(name = "book") @Valid Book book, BindingResult result) {
