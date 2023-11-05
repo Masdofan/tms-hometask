@@ -111,10 +111,6 @@ public class TaskEntity {
         Query query = session.createQuery("select distinct user FROM TaskEntity where status ='NEW' or status = 'IN_PROGRESS'");
         List list = query.list();
 
-        List<UserEntity> userEntityList = new ArrayList<>();
-
-
-
         transaction.commit();
         session.close();
         return list;
