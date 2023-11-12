@@ -51,8 +51,11 @@ public class UserSearchDto {
                 criteria.add(Restrictions.eq("role", role));
             }
 
-            if (from != null && to != null) {
+            if (from != null) {
                 criteria.add(Restrictions.gt("birthday", from));
+            }
+
+            if (to != null) {
                 criteria.add(Restrictions.lt("birthday", to));
             }
 

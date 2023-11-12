@@ -71,7 +71,7 @@ public class Main {
         taskService.addTaskToUser(4,2);
 
         UserSearchDto dto = UserSearchDto.builder()
-                .taskStatus(TaskStatus.DONE)
+                .to(new Date(100, 10, 12))
                 .build();
 
         List<UserEntity> search = dto.search();
