@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.EnumUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -35,93 +34,36 @@ public class UserSearchDto {
 
     private TaskStatus taskStatus;
 
-    private List<TaskEntity> tasks;
 
-    public static List<UserEntity> searchByRole (UserRole role) {
-        var search = UserSearchDto.builder()
-                .role(role)
-                .build();
-
+    public List<UserEntity> search() {
         Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = session.getTransaction();
 
-        Criteria criteria = session.createCriteria(UserEntity.class);
+        Criteria criteria = session.createCriteria(UserEntity.class, "us");
+
         List result;
 
-        if (search == null) {
+        if (this == null) {
             result = criteria.list();
         } else {
-            if (search.getRole() != null) {
-                criteria.add(Restrictions.eq("role", search.getRole()));
+
+            if (role != null) {
+                criteria.add(Restrictions.eq("role", role));
             }
+
+            if (from != null && to != null) {
+                criteria.add(Restrictions.gt("birthday", from));
+                criteria.add(Restrictions.lt("birthday", to));
+            }
+
+            if (taskStatus != null) {
+                Criteria crTasks = criteria.createCriteria("us.tasks", "ts");
+                crTasks.add(Restrictions.eq("status", taskStatus));
+            }
+
+            result = criteria.list();
         }
-
-        result = criteria.list();
-
-        transaction.commit();
-        session.close();
         return result;
-    }
-
-    public static List<UserEntity> searchByDate (Date from, Date to) {
-        var search = UserSearchDto.builder()
-                .from(from)
-                .to(to)
-                .build();
-
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
-
-        Criteria criteria = session.createCriteria(UserEntity.class);
-        List result;
-
-        if (search == null) {
-            result = criteria.list();
-        } else {
-            if (search.from != null && search.to != null) {
-                criteria.add(Restrictions.gt("birthday", search.getFrom()));
-                criteria.add(Restrictions.lt("birthday", search.getTo()));
-            }
-        }
-
-        result = criteria.list();
-
-        transaction.commit();
-        session.close();
-        return result;
-    }
-
-    public static List<UserEntity> searchByTaskStatus (TaskStatus taskStatus) {
-        var search = TaskSearchDto.builder()
-                .status(taskStatus)
-                .build();
-
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
-
-        Criteria criteria = session.createCriteria(TaskEntity.class);
-        List<TaskEntity> result;
-
-        if (search == null) {
-            result = criteria.list();
-        } else {
-            if (search.getStatus() != null) {
-                criteria.add(Restrictions.eq("status", taskStatus));
-            }
-        }
-
-        result = (List<TaskEntity>) criteria.list();
-
-        List<UserEntity> userEntities = new ArrayList<>(); // Это очень костыльно и я вообще не уверен, что надо это решать
-                                                           // именно так, но оно работает (вроде как)
-        for (TaskEntity entity : result) {
-            UserEntity user = entity.getUser();
-            userEntities.add(user);
-        }
-
-        transaction.commit();
-        session.close();
-        return userEntities;
     }
 
 }
