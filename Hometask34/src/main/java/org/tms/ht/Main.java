@@ -6,6 +6,7 @@ import org.tms.ht.config.HibernateConfig;
 import org.tms.ht.dto.UserSearchDto;
 import org.tms.ht.entity.TaskEntity;
 import org.tms.ht.entity.UserEntity;
+import org.tms.ht.service.SearchService;
 import org.tms.ht.service.TaskService;
 import org.tms.ht.service.UserService;
 
@@ -18,6 +19,7 @@ public class Main {
 
         UserService userService = new UserService();
         TaskService taskService = new TaskService();
+        SearchService searchService = new SearchService();
 
         UserEntity user1 = UserEntity.builder()
                 .name("user1")
@@ -65,16 +67,16 @@ public class Main {
                 .build();
         taskService.save(task4);
 
-        taskService.addTaskToUser(1,1);
-        taskService.addTaskToUser(2,1);
-        taskService.addTaskToUser(3,2);
-        taskService.addTaskToUser(4,2);
+        taskService.addTaskToUser(task1,1);
+        taskService.addTaskToUser(task2,1);
+        taskService.addTaskToUser(task3,2);
+        taskService.addTaskToUser(task4,2);
 
         UserSearchDto dto = UserSearchDto.builder()
                 .to(new Date(100, 10, 12))
                 .build();
 
-        List<UserEntity> search = dto.search();
+        List<UserEntity> search = searchService.search(dto);
 
         System.out.println(search);
 

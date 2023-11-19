@@ -47,20 +47,15 @@ public class TaskService {
         session.close();
     }
 
-    public void addTaskToUser (int taskId, int userId) {
+    public void addTaskToUser (TaskEntity task, int userId) {
         UserService userService = new UserService();
 
         Session session = HibernateConfig.create();
         Transaction transaction = session.beginTransaction();
 
         UserEntity user1 = userService.getById(userId);
-        TaskEntity task = getById(taskId);
 
         task.setUser(user1);
-
-        List<TaskEntity> tasks = user1.getTasks();
-        tasks.add(task);
-        user1.setTasks(List.of(task));
 
         session.update(task);
         session.update(user1);

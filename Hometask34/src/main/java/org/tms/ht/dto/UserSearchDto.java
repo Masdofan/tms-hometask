@@ -34,39 +34,4 @@ public class UserSearchDto {
 
     private TaskStatus taskStatus;
 
-
-    public List<UserEntity> search() {
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.getTransaction();
-
-        Criteria criteria = session.createCriteria(UserEntity.class, "us");
-
-        List result;
-
-        if (this == null) {
-            result = criteria.list();
-        } else {
-
-            if (role != null) {
-                criteria.add(Restrictions.eq("role", role));
-            }
-
-            if (from != null) {
-                criteria.add(Restrictions.gt("birthday", from));
-            }
-
-            if (to != null) {
-                criteria.add(Restrictions.lt("birthday", to));
-            }
-
-            if (taskStatus != null) {
-                Criteria crTasks = criteria.createCriteria("us.tasks", "ts");
-                crTasks.add(Restrictions.eq("status", taskStatus));
-            }
-
-            result = criteria.list();
-        }
-        return result;
-    }
-
 }

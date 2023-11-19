@@ -5,6 +5,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.tms.ht.UserRole;
 import org.tms.ht.config.HibernateConfig;
+import org.tms.ht.dto.UserUpdateDto;
 import org.tms.ht.entity.UserEntity;
 
 import java.util.Date;
@@ -44,61 +45,85 @@ public class UserService {
         session.close();
     }
 
-    public void updateName (int userId, String newName) {
+    public void update (int userId, UserUpdateDto updateDto) {
         Session session = HibernateConfig.create();
         Transaction transaction = session.beginTransaction();
 
         UserEntity userEntity = session.find(UserEntity.class, userId);
-        userEntity.setName(newName);
+        if(updateDto.getUpName() != null) {
+            userEntity.setName(updateDto.getUpName());
+        }
+        if (updateDto.getUpRole() != null) {
+            userEntity.setRole(updateDto.getUpRole());
+        }
+        if (updateDto.getUpBirthday() != null) {
+            userEntity.setBirthday(updateDto.getUpBirthday());
+        }
+        if (updateDto.isMan() != userEntity.isMan()){
+            userEntity.setMan(updateDto.isMan());
+        }
 
         session.update(userEntity);
 
         transaction.commit();
         session.close();
-
     }
 
-    public void updateRole (int userId, UserRole role) {
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
-
-        UserEntity userEntity = session.find(UserEntity.class, userId);
-        userEntity.setRole(role);
-
-        session.update(userEntity);
-
-        transaction.commit();
-        session.close();
-
-    }
-
-    public void updateBirthday (int userId, Date newBirthday) {
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
-
-        UserEntity userEntity = session.find(UserEntity.class, userId);
-        userEntity.setBirthday(newBirthday);
-
-        session.update(userEntity);
-
-        transaction.commit();
-        session.close();
-
-    }
-
-    public void updateGender (int userId, boolean isMan) {
-        Session session = HibernateConfig.create();
-        Transaction transaction = session.beginTransaction();
-
-        UserEntity userEntity = session.find(UserEntity.class, userId);
-        userEntity.setMan(isMan);
-
-        session.update(userEntity);
-
-        transaction.commit();
-        session.close();
-
-    }
+//    public void updateName (int userId, String newName) {
+//        Session session = HibernateConfig.create();
+//        Transaction transaction = session.beginTransaction();
+//
+//        UserEntity userEntity = session.find(UserEntity.class, userId);
+//        userEntity.setName(newName);
+//
+//        session.update(userEntity);
+//
+//        transaction.commit();
+//        session.close();
+//
+//    }
+//
+//    public void updateRole (int userId, UserRole role) {
+//        Session session = HibernateConfig.create();
+//        Transaction transaction = session.beginTransaction();
+//
+//        UserEntity userEntity = session.find(UserEntity.class, userId);
+//        userEntity.setRole(role);
+//
+//        session.update(userEntity);
+//
+//        transaction.commit();
+//        session.close();
+//
+//    }
+//
+//    public void updateBirthday (int userId, Date newBirthday) {
+//        Session session = HibernateConfig.create();
+//        Transaction transaction = session.beginTransaction();
+//
+//        UserEntity userEntity = session.find(UserEntity.class, userId);
+//        userEntity.setBirthday(newBirthday);
+//
+//        session.update(userEntity);
+//
+//        transaction.commit();
+//        session.close();
+//
+//    }
+//
+//    public void updateGender (int userId, boolean isMan) {
+//        Session session = HibernateConfig.create();
+//        Transaction transaction = session.beginTransaction();
+//
+//        UserEntity userEntity = session.find(UserEntity.class, userId);
+//        userEntity.setMan(isMan);
+//
+//        session.update(userEntity);
+//
+//        transaction.commit();
+//        session.close();
+//
+//    }
 
     public void deleteAll() {
         Session session = HibernateConfig.create();
