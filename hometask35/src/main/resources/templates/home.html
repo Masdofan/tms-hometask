@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/save" method="post">
+    <input type="text" th:name="title" placeholder="title"><br>
+    <input type="text" th:name="genre" placeholder="genre"><br>
+    <input type="number" th:name="year" placeholder="year"><br>
+    <input type="number" th:name="rate" placeholder="rate"><br>
+    <input type="submit" value="save">
+</form>
+
+<ul>
+    <li th:each="mvs : ${movies}" th:text="${mvs.getTitle()}">title</li>
+</ul>
+
+</body>
+</html>
