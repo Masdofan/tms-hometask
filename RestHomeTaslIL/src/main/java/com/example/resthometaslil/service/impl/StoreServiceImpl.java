@@ -15,7 +15,7 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public CarDto save(CarDto dto) {
 
-        var responseEntity = template.postForEntity("127.0.0.1:8081/cars", dto, CarDto.class);
+        var responseEntity = template.postForEntity("http://127.0.0.1:8081/cars", dto, CarDto.class);
 
         return responseEntity.getBody();
     }
