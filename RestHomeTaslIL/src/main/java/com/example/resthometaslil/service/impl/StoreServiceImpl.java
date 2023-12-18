@@ -3,7 +3,6 @@ package com.example.resthometaslil.service.impl;
 import com.example.resthometaslil.dto.CarDto;
 import com.example.resthometaslil.service.StoreService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class StoreServiceImpl implements StoreService {
 
     private final RestTemplate template;
+
     @Override
     public CarDto save(CarDto dto) {
 
