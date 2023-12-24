@@ -8,9 +8,9 @@ public interface StoreService {
 
     CarDto save(CarDto dto);
 
-    List<CarDto> getAll();
-
-    List<CarDto> getById(Integer id);
+//    List<CarDto> getAll();
+//
+//    List<CarDto> getById(Integer id);
 
 
 
