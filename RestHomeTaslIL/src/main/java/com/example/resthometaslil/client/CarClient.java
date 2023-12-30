@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @FeignClient(name = "car-client", url = "http://127.0.0.1:8081", path = "/cars")
 public interface CarClient {
 
@@ -14,5 +16,8 @@ public interface CarClient {
 
     @GetMapping
     CarDto findById(Integer id);
+
+    @GetMapping
+    List<CarDto> findAll();
 
 }

@@ -19,13 +19,13 @@ public class StoreServiceImpl implements StoreService {
         return client.save(dto);
     }
 
-//    @Override
-//    public List<CarDto> getAll() {
-//
-//    }
-//
-//    @Override
-//    public CarDto getById(Integer id) {
-//        return client.findById(id);
-//    }
+    @Override
+    public List<CarDto> findAll() {
+
+    }
+
+    @Override
+    public CarDto findById(Integer id) {
+        return client.findById(id);
+    }
 }
