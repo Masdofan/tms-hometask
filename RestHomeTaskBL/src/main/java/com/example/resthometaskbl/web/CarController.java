@@ -1,7 +1,7 @@
-package com.example.resthometaslil.web;
+package com.example.resthometaskbl.web;
 
-import com.example.resthometaslil.dto.CarDto;
-import com.example.resthometaslil.service.StoreService;
+import com.example.resthometaskbl.dto.CarDto;
+import com.example.resthometaskbl.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,14 +9,14 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/store/cars")
+@RequestMapping("/cars")
 public class CarController {
 
-    private final StoreService service;
+    private final CarService service;
 
     @PostMapping
-    public CarDto save(@RequestBody CarDto dto) {
-        return service.save(dto);
+    public CarDto save(@RequestBody CarDto request) {
+        return service.save(request);
     }
 
     @GetMapping
@@ -25,7 +25,7 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public CarDto findById (@PathVariable(name = "id") Integer id) {
+    public CarDto findById(@PathVariable(name = "id") Integer id) {
         return service.findById(id);
     }
 

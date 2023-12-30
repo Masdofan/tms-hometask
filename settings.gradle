@@ -36,4 +36,6 @@ include 'Hometask34'
 include 'Hometask35'
 include 'hometask36'
 include 'Hometask37_les41'
+include 'RestHomeTaskBL'
+include 'RestHomeTaslIL'
 
