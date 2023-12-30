@@ -10,7 +10,7 @@ public interface StoreService {
 
     List<CarDto> findAll();
 
-    List<CarDto> getById(Integer id);
+    CarDto findById(Integer id);
 
 
 

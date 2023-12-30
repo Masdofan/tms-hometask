@@ -21,7 +21,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public List<CarDto> findAll() {
-
+        return client.findAll();
     }
 
     @Override
