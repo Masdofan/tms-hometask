@@ -1,6 +1,7 @@
 package com.example.resthometaslil.web;
 
 import com.example.resthometaslil.dto.CarDto;
+import com.example.resthometaslil.dto.IlErrorMessage;
 import com.example.resthometaslil.service.StoreService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,12 +43,23 @@ public class CarController {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Car found"
+                            description = "Car found",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            implementation = CarDto.class
+                                    )
+                            )
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Car not exist"
-                    )
+                            description = "Car not exist",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            implementation = IlErrorMessage.class
+                                    )
+                    ))
             }
     )
     public CarDto findById (@PathVariable(name = "id") Integer id) {
