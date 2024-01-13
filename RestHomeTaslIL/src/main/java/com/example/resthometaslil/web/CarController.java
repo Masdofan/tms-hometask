@@ -1,19 +1,18 @@
 package com.example.resthometaslil.web;
 
 import com.example.resthometaslil.dto.CarDto;
+import com.example.resthometaslil.dto.IlErrorMessage;
 import com.example.resthometaslil.service.StoreService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.ResponseEntity.ok;
 
 @RequiredArgsConstructor
 @RestController
@@ -28,8 +27,8 @@ public class CarController {
     private final StoreService service;
 
     @PostMapping
-    public ResponseEntity<CarDto> save(@Valid @RequestBody CarDto dto) {
-        return ok(service.save(dto));
+    public CarDto save(@RequestBody CarDto dto) {
+        return service.save(dto);
     }
 
     @GetMapping
@@ -44,17 +43,27 @@ public class CarController {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Car found"
+                            description = "Car found",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            implementation = CarDto.class
+                                    )
+                            )
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Car not exist"
-                    )
+                            description = "Car not exist",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            implementation = IlErrorMessage.class
+                                    )
+                    ))
             }
     )
     public CarDto findById (@PathVariable(name = "id") Integer id) {
         return service.findById(id);
     }
-
 
 }
